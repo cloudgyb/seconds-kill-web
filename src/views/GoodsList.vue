@@ -1,20 +1,39 @@
 <template>
-  <div>
-    <common-header />
-    <div>
-      <div class="card-wrapper">
-        <div v-for="o in goodsList" :key="o.goodsName" @click="goGoodsDetail(o.id)" class="card">
-          <img :src="o.goodsImg" />
-          <div class="card-content">
-            <span class="card-title">{{ o.goodsName }}</span>
-            <div class="card-desc">
-              <span :title="o.goodsTitle" style="overflow:hidden;white-space:nowrap;text-overflow: ellipsis;display: block" v-text="o.goodsTitle"></span>
-            </div>
-            <span style="border:1px solid #e1251b;background: #e1251b;color: #f1f1ef">
-              <span style="color: #f1f1ef" class="el-icon-"><i style="font-size: 10px">秒杀</i>￥{{ o.miaoshaPrice }}</span>
-              <span style="color:#2b2c2d;background:#ffffff;text-decoration: line-through;">￥{{ o.goodsPrice }}</span>
-            </span>
+  <div class="main">
+    <div class="card-wrapper">
+      <div v-for="o in goodsList" :key="o.goodsName" @click="goGoodsDetail(o.id)" class="card">
+        <img :src="o.goodsImg" />
+        <div class="card-content">
+          <span class="card-title">{{ o.goodsName }}</span>
+          <div class="card-desc">
+            <span
+              :title="o.goodsTitle"
+              style="
+                  overflow: hidden;
+                  white-space: nowrap;
+                  text-overflow: ellipsis;
+                  display: block;
+                "
+              v-text="o.goodsTitle"
+            ></span>
           </div>
+          <span
+            style="
+                border: 1px solid #e1251b;
+                background: #e1251b;
+                color: #f1f1ef;
+              "
+          >
+            <span style="color: #f1f1ef" class="el-icon-"><i style="font-size: 10px">秒杀</i>￥{{ o.miaoshaPrice }}</span>
+            <span
+              style="
+                  color: #2b2c2d;
+                  background: #ffffff;
+                  text-decoration: line-through;
+                "
+              >￥{{ o.goodsPrice }}</span
+            >
+          </span>
         </div>
       </div>
     </div>
@@ -22,12 +41,8 @@
 </template>
 
 <script>
-import CommonHeader from './CommonHeader'
 export default {
   name: 'GoodsList',
-  components: {
-    CommonHeader
-  },
   data() {
     return {
       currentDate: '商品列表',
@@ -36,7 +51,7 @@ export default {
   },
   methods: {
     goGoodsDetail: function(goodsId) {
-      window.location.href = '/goods/detail/' + goodsId
+      this.$router.push({ path: `/goods/detail/${goodsId}` })
     }
   },
   mounted: function() {
@@ -57,7 +72,7 @@ export default {
 body {
   margin: 0;
 }
-#app {
+.main {
   width: 1000px;
   margin: 10px auto 0 auto;
 }

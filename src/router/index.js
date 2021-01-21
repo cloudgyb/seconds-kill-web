@@ -7,8 +7,19 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'GoodsList',
-    component: GoodsList
+    component: () => import('../views/Main'),
+    children: [
+      {
+        path: '/',
+        name: 'GoodsList',
+        component: GoodsList
+      },
+      {
+        path: '/goods/detail/:goodsId',
+        name: 'GoodsDetail',
+        component: () => import('../views/GoodsDetail.vue')
+      }
+    ]
   },
   {
     path: '/login',
