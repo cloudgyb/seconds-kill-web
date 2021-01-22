@@ -94,7 +94,7 @@ export default {
       this.$http.post('/secondsKill', param).then(function(response) {
         let data = response.data
         if (data && data.code === 200) {
-          window.location.href = '/order/detail?id=' + data.data.id
+          _self.$router.push({ name: 'OrderDetail', query: { orderId: data.data.id } })
         } else {
           _self.$message({
             message: data.msg,

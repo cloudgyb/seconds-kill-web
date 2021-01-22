@@ -1,7 +1,7 @@
 <template>
   <div>
     <common-header />
-    <router-view />
+    <router-view class="main" />
   </div>
 </template>
 

@@ -5,6 +5,7 @@ import store from './store'
 import ElementUI from 'element-ui'
 import Axios from './api/axios.config'
 import 'element-ui/lib/theme-chalk/index.css'
+import './assets/global.css'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)

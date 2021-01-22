@@ -26,7 +26,18 @@ instance.interceptors.request.use(
 )
 
 instance.interceptors.response.use(
-  resp => resp,
+  resp => {
+    console.log(resp)
+    if (resp.data && resp.data.data) {
+      if (resp.data.data.code === 500) {
+        Message({
+          message: '请求出错，请稍后重试！',
+          type: 'error'
+        })
+      }
+    }
+    return resp
+  },
   error => {
     if (error.response) {
       if (error.response.status === 403) {
@@ -37,6 +48,11 @@ instance.interceptors.response.use(
         router.replace({
           path: '/login',
           query: { redirect: router.currentRoute.fullPath }
+        })
+      } else {
+        Message({
+          message: '请求失败了，请稍后重试哦！',
+          type: 'error'
         })
       }
     } else {

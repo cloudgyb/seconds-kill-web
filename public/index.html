@@ -6,6 +6,32 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <style>
+      body{
+        display: flex;
+        flex-flow: column;
+        min-height: 100vh;
+        overflow: auto;
+      }
+      #app{
+        flex: 1
+      }
+      footer {
+        height: 5vh;
+        line-height: 5vh;
+        font-size: 15px;
+        color: #6c6c6c;
+        padding: 0 5vh;
+        background: #e3e9f1;
+      }
+      footer ol {
+        margin: 0;
+      }
+      footer li {
+        list-style: none;
+        float: left;
+      }
+    </style>
   </head>
   <body>
     <noscript>
@@ -13,5 +39,10 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <footer>
+      <ol>
+        <li>&copy;2021 GengYB版权所有</li>
+      </ol>
+    </footer>
   </body>
 </html>
