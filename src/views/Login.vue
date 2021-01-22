@@ -59,9 +59,11 @@ export default {
         .then(function(response) {
           let data = response.data
           if (data && data.code === 200) {
-            window.location.href = '/'
             self.msg = '登录成功!'
-          } else self.msg = '<span style="color: #bb0202">' + data.msg + '</span>'
+            self.$router.replace({ path: self.$route.query.redirect })
+          } else {
+            self.msg = '<span style="color: #bb0202">' + data.msg + '</span>'
+          }
         })
         .catch(function(error) {
           self.msg = '<span style="color: #bb0202">登录失败!</span>'

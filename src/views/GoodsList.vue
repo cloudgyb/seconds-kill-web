@@ -56,14 +56,9 @@ export default {
   },
   mounted: function() {
     let self = this
-    return this.$http
-      .get('/miaosha/goods/list')
-      .then(function(resp) {
-        self.goodsList = resp.data.data
-      })
-      .catch(function(err) {
-        console.log(err)
-      })
+    return this.$http.get('/miaosha/goods/list').then(function(resp) {
+      self.goodsList = resp.data.data
+    })
   }
 }
 </script>

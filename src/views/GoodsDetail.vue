@@ -91,37 +91,17 @@ export default {
     secondsKill: function() {
       let _self = this
       let param = 'goodsId=' + this.goodsDetail.goodsId
-      this.$http
-        .post('/secondsKill', param)
-        .then(function(response) {
-          let data = response.data
-          if (data && data.code === 200) {
-            window.location.href = '/order/detail?id=' + data.data.id
-          } else {
-            _self.$message({
-              message: data.msg,
-              type: 'warning'
-            })
-            //alert(data.msg)
-          }
-        })
-        .catch(function(error) {
-          if (error.response) {
-            if (error.response.status === 403) {
-              //alert('请先登录！')
-              _self.$message({
-                message: '请先登录哦！',
-                type: 'warning'
-              })
-              _self.$router.push({ path: '/login' })
-            }
-          } else {
-            _self.$message({
-              message: '秒杀失败了，请稍后重试哦！',
-              type: 'error'
-            })
-          }
-        })
+      this.$http.post('/secondsKill', param).then(function(response) {
+        let data = response.data
+        if (data && data.code === 200) {
+          window.location.href = '/order/detail?id=' + data.data.id
+        } else {
+          _self.$message({
+            message: data.msg,
+            type: 'warning'
+          })
+        }
+      })
     },
     confirmMiaoshaStatus(startDateTime, endDateTime) {
       let startTime = new Date(startDateTime).getTime()

@@ -20,38 +20,25 @@ export default {
   },
   methods: {
     logout: function() {
-      this.$http
-        .post('/doLogout')
-        .then(function(resp) {
-          let data = resp.data
-          if (data.code === 200) window.location.reload()
-        })
-        .catch(function(err) {
-          console.log(err)
-        })
+      this.$http.post('/doLogout').then(function(resp) {
+        let data = resp.data
+        if (data.code === 200) window.location.reload()
+      })
     }
   },
   mounted: function() {
     let _self = this
-    this.$http
-      .get('/getLoginUserInfo')
-      .then(function(resp) {
-        let data = resp.data
-        if (data.data != undefined) {
-          _self.isLoged = true
-          _self.userName = data.data.nickName
-        }
-
-        console.log(resp)
-      })
-      .catch(function(err) {
-        console.error(err)
-      })
+    this.$http.get('/getLoginUserInfo').then(function(resp) {
+      let data = resp.data
+      if (data.data != undefined) {
+        _self.isLoged = true
+        _self.userName = data.data.nickName
+      }
+    })
   }
 }
 </script>
 
-<style scoped></style>
 <style scoped>
 .header-container {
   padding: 0 50px;
