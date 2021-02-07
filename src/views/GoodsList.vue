@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import { getGoodsList } from '../api/goods'
 export default {
   name: 'GoodsList',
   data() {
@@ -55,10 +56,7 @@ export default {
     }
   },
   mounted: function() {
-    let self = this
-    return this.$http.get('/miaosha/goods/list').then(function(resp) {
-      self.goodsList = resp.data.data
-    })
+    getGoodsList(this)
   }
 }
 </script>

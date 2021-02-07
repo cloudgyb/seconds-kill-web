@@ -3,9 +3,9 @@
     <el-container>
       <el-header>
         商品秒杀
-        <el-link th:href="@{/signUp}" type="primary" style="font-size: 10px;float:right">免费注册</el-link>
+        <router-link :to="{ name: 'SignUp' }" class="sign-up">免费注册</router-link>
       </el-header>
-      <el-main>
+      <el-main :style="'background-image: ' + 'url(' + bgImage + ')'">
         <el-form :model="loginForm" :rules="rules" ref="loginForm" label-width="0" class="login-form">
           <el-form-item prop="account">
             <el-input v-model="loginForm.account" placeholder="手机号/用户名/邮箱"></el-input>
@@ -30,6 +30,7 @@ export default {
   name: 'Login',
   data() {
     return {
+      bgImage: require('../assets/images/login_bg.jpg'),
       loginForm: {
         account: '',
         password: ''
@@ -85,7 +86,7 @@ body {
 }
 .el-main {
   background-size: cover;
-  background: gray url('/images/login_bg.jpg') no-repeat center 50%;
+  background: gray no-repeat center 50%;
   height: 600px;
 }
 .el-footer {
@@ -101,5 +102,10 @@ body {
   padding: 30px;
   border: 1px solid #ccc;
   background: #fafafa;
+}
+.sign-up {
+  font-size: 15px;
+  text-decoration: none;
+  float: right;
 }
 </style>
